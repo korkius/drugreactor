@@ -33,53 +33,45 @@ export function SupplementRecommendations({ recommendations }: SupplementRecomme
   }
 
   return (
-    <Card className="w-full shadow-xl border-0 bg-gradient-to-br from-white to-purple-50/30 overflow-hidden">
-      <CardHeader className="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-        <CardTitle className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-            <Heart className="h-6 w-6" />
-          </div>
-          <span className="text-2xl font-bold">Recommended Supplements</span>
+    <Card className="w-full">
+      <CardHeader>
+        <CardTitle className="flex items-center space-x-2">
+          <Heart className="h-5 w-5 text-green-600" />
+          <span>Recommended Supplements</span>
         </CardTitle>
-        <p className="text-purple-100 mt-2">
+        <p className="text-sm text-gray-600">
           These supplements may help support your health while taking this medication. Always consult your healthcare provider before starting any new supplements.
         </p>
       </CardHeader>
-      <CardContent className="space-y-6 p-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <CardContent>
+        <div className="space-y-4">
           {recommendations.map((supplement) => (
-            <div key={supplement.id} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-200 hover:scale-[1.02]">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  {categoryIcons[supplement.category]}
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center space-x-2 mb-3">
-                    <h4 className="text-lg font-semibold text-gray-900">{supplement.name}</h4>
-                    <Badge 
-                      className={`${categoryColors[supplement.category] || 'bg-gray-100 text-gray-800'} flex items-center space-x-1`}
-                    >
-                      {categoryIcons[supplement.category]}
-                      <span>{supplement.category}</span>
-                    </Badge>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed">
-                    {supplement.reason}
-                  </p>
+            <div key={supplement.id} className="border rounded-lg p-4 hover:bg-gray-50 transition-colors">
+              <div className="flex items-start justify-between mb-2">
+                <div className="flex items-center space-x-2">
+                  <h4 className="font-medium text-gray-900">{supplement.name}</h4>
+                  <Badge 
+                    variant="secondary" 
+                    className={`${categoryColors[supplement.category] || 'bg-gray-100 text-gray-800'} flex items-center space-x-1`}
+                  >
+                    {categoryIcons[supplement.category]}
+                    <span>{supplement.category}</span>
+                  </Badge>
                 </div>
               </div>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                {supplement.reason}
+              </p>
             </div>
           ))}
         </div>
         
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6">
-          <div className="flex items-start space-x-4">
-            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-              <Shield className="h-5 w-5 text-blue-600" />
-            </div>
+        <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+          <div className="flex items-start space-x-2">
+            <Shield className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
             <div>
-              <h4 className="text-lg font-semibold text-blue-900 mb-2">Important Safety Note</h4>
-              <p className="text-blue-800 leading-relaxed">
+              <h4 className="font-medium text-blue-900 mb-1">Important Safety Note</h4>
+              <p className="text-sm text-blue-800">
                 These recommendations are for educational purposes only. Always discuss supplement use with your healthcare provider, especially if you have any medical conditions or are taking other medications. Some supplements may interact with your medication or affect its effectiveness.
               </p>
             </div>
