@@ -336,17 +336,17 @@ export async function POST(request: NextRequest) {
       }
       keyPoints.push('Add another medication to check for potential interactions')
     } else {
-      if (hasSerious) {
-        keyPoints.push(`Found ${relevantInteractions.filter(i => i.severity === 'serious').length} serious interaction(s) requiring immediate attention`)
-      }
-      if (hasModerate) {
-        keyPoints.push(`Found ${relevantInteractions.filter(i => i.severity === 'moderate').length} moderate interaction(s) requiring monitoring`)
-      }
-      if (relevantGuidance.length > 0) {
-        keyPoints.push(`Supplement guidance available for ${relevantGuidance.length} medication(s)`)
-      }
-      if (relevantInteractions.length === 0) {
-        keyPoints.push('No significant interactions found between your medications')
+    if (hasSerious) {
+      keyPoints.push(`Found ${relevantInteractions.filter(i => i.severity === 'serious').length} serious interaction(s) requiring immediate attention`)
+    }
+    if (hasModerate) {
+      keyPoints.push(`Found ${relevantInteractions.filter(i => i.severity === 'moderate').length} moderate interaction(s) requiring monitoring`)
+    }
+    if (relevantGuidance.length > 0) {
+      keyPoints.push(`Supplement guidance available for ${relevantGuidance.length} medication(s)`)
+    }
+    if (relevantInteractions.length === 0) {
+      keyPoints.push('No significant interactions found between your medications')
       }
     }
 
@@ -361,18 +361,18 @@ export async function POST(request: NextRequest) {
       }
       recommendations.push('Consider adding other medications you take to check for interactions')
     } else {
-      if (hasSerious) {
-        recommendations.push('Consult your healthcare provider immediately about serious interactions')
-      }
-      if (hasModerate) {
-        recommendations.push('Monitor closely for moderate interactions and discuss with your healthcare provider')
-      }
-      if (relevantGuidance.length > 0) {
-        recommendations.push('Review supplement guidance for optimal health outcomes')
-      }
-      if (relevantInteractions.length === 0) {
-        recommendations.push('Continue current regimen as prescribed by your healthcare provider')
-      }
+    if (hasSerious) {
+      recommendations.push('Consult your healthcare provider immediately about serious interactions')
+    }
+    if (hasModerate) {
+      recommendations.push('Monitor closely for moderate interactions and discuss with your healthcare provider')
+    }
+    if (relevantGuidance.length > 0) {
+      recommendations.push('Review supplement guidance for optimal health outcomes')
+    }
+    if (relevantInteractions.length === 0) {
+      recommendations.push('Continue current regimen as prescribed by your healthcare provider')
+    }
     }
 
     // Get supplement recommendations for single medication
