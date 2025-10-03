@@ -5,6 +5,7 @@ import { DrugSearch } from '@/components/DrugSearch'
 import { InteractionsTable } from '@/components/InteractionsTable'
 import { SupplementGuidanceComponent } from '@/components/SupplementGuidance'
 import { SupplementRecommendations } from '@/components/SupplementRecommendations'
+import { MedicationInfo } from '@/components/MedicationInfo'
 import { SummaryCard } from '@/components/SummaryCard'
 import { Drug, SearchResult } from '@/types'
 
@@ -105,17 +106,11 @@ export default function Home() {
           {/* Results Section */}
           {results && (
             <div className="space-y-8">
-              {/* Header with New Search Button */}
+              {/* Header */}
               <div className="text-center">
                 <h1 className="text-3xl font-bold text-gray-900 mb-4">
                   {drugs.length === 1 ? 'Medication Information' : 'Interaction Results'}
                 </h1>
-                <button
-                  onClick={handleNewSearch}
-                  className="text-blue-600 hover:text-blue-800 underline"
-                >
-                  ← {drugs.length === 1 ? 'Check Different Medication' : 'Check Different Medications'}
-                </button>
               </div>
 
               {/* Error Message */}
@@ -127,14 +122,21 @@ export default function Home() {
 
               {/* Results */}
               <div className="space-y-6">
-                <SummaryCard result={results} />
-                {drugs.length > 1 && (
-                  <InteractionsTable interactions={results.interactions} />
+                {drugs.length === 1 ? (
+                  <>
+                    <MedicationInfo drug={drugs[0]} />
+                    {results.supplementRecommendations && (
+                      <SupplementRecommendations recommendations={results.supplementRecommendations} />
+                    )}
+                    <SupplementGuidanceComponent guidance={results.supplementGuidance} />
+                  </>
+                ) : (
+                  <>
+                    <SummaryCard result={results} />
+                    <InteractionsTable interactions={results.interactions} />
+                    <SupplementGuidanceComponent guidance={results.supplementGuidance} />
+                  </>
                 )}
-                {drugs.length === 1 && results.supplementRecommendations && (
-                  <SupplementRecommendations recommendations={results.supplementRecommendations} />
-                )}
-                <SupplementGuidanceComponent guidance={results.supplementGuidance} />
               </div>
             </div>
           )}
