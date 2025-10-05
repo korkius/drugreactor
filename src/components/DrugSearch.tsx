@@ -483,9 +483,6 @@ export function DrugSearch({ drugs, onDrugsChange, onSearch, onNewSearch, isLoad
           )}
         </div>
         
-        <p className="text-sm text-gray-500 text-center">
-          Start typing to see suggestions. Press Enter to add, or use arrow keys to navigate.
-        </p>
       </div>
 
       {/* Selected Drugs */}
