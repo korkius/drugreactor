@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { Supplement } from '@/types'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Pill, Heart, Shield, Zap, Leaf, Droplets, ChevronDown, ChevronUp, Info } from 'lucide-react'
 
@@ -95,18 +94,7 @@ export function SupplementRecommendations({ recommendations }: SupplementRecomme
   }
 
   return (
-    <Card className="w-full">
-      <CardHeader>
-        <CardTitle className="flex items-center space-x-2">
-          <Heart className="h-5 w-5 text-green-600" />
-          <span>Recommended Supplements</span>
-        </CardTitle>
-        <p className="text-sm text-gray-600">
-          These supplements may help support your health while taking this medication. Click on any supplement to learn more. Always consult your healthcare provider before starting any new supplements.
-        </p>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
+    <div className="space-y-4">
           {recommendations.map((supplement) => {
             const isExpanded = expandedSupplement === supplement.id
             const details = getSupplementDetails(supplement)
@@ -206,7 +194,5 @@ export function SupplementRecommendations({ recommendations }: SupplementRecomme
             </div>
           </div>
         </div>
-      </CardContent>
-    </Card>
   )
 }
