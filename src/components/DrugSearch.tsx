@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect, KeyboardEvent } from 'react'
-import { Search, Plus, X, Pill, AlertCircle } from 'lucide-react'
+import { Search, Plus, X, Pill, AlertCircle, Shield, Heart, Activity } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
@@ -381,18 +381,60 @@ export function DrugSearch({ drugs, onDrugsChange, onSearch, onNewSearch, isLoad
   return (
     <div className="w-full max-w-4xl mx-auto space-y-6">
       {/* Header */}
-      <div className="text-center space-y-4">
-        <h1 
-          className="text-4xl font-bold text-gray-900 cursor-pointer hover:text-blue-600 transition-colors duration-200"
+      <div className="text-center space-y-6">
+        {/* Logo */}
+        <div 
+          className="flex items-center justify-center space-x-3 cursor-pointer group"
           onClick={() => onNewSearch?.()}
           title="Click to start a new search"
         >
-          DrugReactor
-        </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Check drug interactions and get personalized supplement guidance. 
-          Enter your medications and supplements to get started.
-        </p>
+          {/* Main Logo Icon */}
+          <div className="relative">
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+              <Pill className="w-8 h-8 text-white" />
+            </div>
+            {/* Safety Shield Overlay */}
+            <div className="absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center shadow-md">
+              <Shield className="w-3 h-3 text-white" />
+            </div>
+          </div>
+          
+          {/* Logo Text */}
+          <div className="text-left">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent group-hover:from-blue-700 group-hover:to-blue-900 transition-all duration-300">
+              DrugReactor
+            </h1>
+            <p className="text-sm text-gray-500 font-medium -mt-1">
+              Safe • Smart • Reliable
+            </p>
+          </div>
+        </div>
+
+        {/* Tagline */}
+        <div className="space-y-2">
+          <p className="text-xl text-gray-700 max-w-2xl mx-auto font-medium">
+            Check drug interactions and get personalized supplement guidance
+          </p>
+          <p className="text-gray-500 max-w-xl mx-auto">
+            Enter your medications and supplements to get started
+          </p>
+        </div>
+
+        {/* Trust Indicators */}
+        <div className="flex items-center justify-center space-x-6 text-sm text-gray-500">
+          <div className="flex items-center space-x-1">
+            <Heart className="w-4 h-4 text-red-500" />
+            <span>Medical Grade</span>
+          </div>
+          <div className="flex items-center space-x-1">
+            <Shield className="w-4 h-4 text-green-500" />
+            <span>Privacy First</span>
+          </div>
+          <div className="flex items-center space-x-1">
+            <Activity className="w-4 h-4 text-blue-500" />
+            <span>Instant Results</span>
+          </div>
+        </div>
       </div>
 
       {/* Search Input */}
