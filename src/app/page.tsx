@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { DrugSearch } from '@/components/DrugSearch'
 import { InteractionsTable } from '@/components/InteractionsTable'
 import { SupplementGuidanceComponent } from '@/components/SupplementGuidance'
@@ -8,6 +8,7 @@ import { SupplementRecommendations } from '@/components/SupplementRecommendation
 import { MedicationInfo } from '@/components/MedicationInfo'
 import { SummaryCard } from '@/components/SummaryCard'
 import { Drug, SearchResult } from '@/types'
+import { generateId } from '@/lib/utils'
 
 export default function Home() {
   const [drugs, setDrugs] = useState<Drug[]>([])
@@ -89,7 +90,56 @@ export default function Home() {
     setDrugs([])
     setResults(null)
     setError(null)
+    // Push home state to browser history
+    window.history.pushState({ page: 'home' }, '', '/')
   }
+
+  // Handle browser back/forward buttons and initial URL state
+  useEffect(() => {
+    const handlePopState = (event: PopStateEvent) => {
+      // When user presses back button, go to home state
+      setDrugs([])
+      setResults(null)
+      setError(null)
+    }
+
+    // Check if there are drugs in URL parameters on initial load
+    const urlParams = new URLSearchParams(window.location.search)
+    const drugsParam = urlParams.get('drugs')
+    
+    if (drugsParam) {
+      // Restore drugs from URL
+      const drugNames = drugsParam.split(',').map(name => name.trim())
+      // This will trigger the auto-analysis via handleDrugsChange
+      const restoredDrugs = drugNames.map(name => ({
+        id: generateId(),
+        name: name,
+        type: 'prescription' as const,
+        category: 'Unknown'
+      }))
+      setDrugs(restoredDrugs)
+    } else {
+      // Push initial home state to history
+      window.history.pushState({ page: 'home' }, '', '/')
+    }
+
+    // Add event listener for browser back/forward buttons
+    window.addEventListener('popstate', handlePopState)
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('popstate', handlePopState)
+    }
+  }, [])
+
+  // Update browser history when results change
+  useEffect(() => {
+    if (results && drugs.length > 0) {
+      // Push results state to history when showing results
+      const searchParams = drugs.map(drug => drug.name).join(',')
+      window.history.pushState({ page: 'results', drugs: searchParams }, '', `/?drugs=${encodeURIComponent(searchParams)}`)
+    }
+  }, [results, drugs])
 
   return (
     <div className="min-h-screen bg-gray-50">
