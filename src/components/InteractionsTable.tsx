@@ -42,16 +42,13 @@ export function InteractionsTable({ interactions }: InteractionsTableProps) {
   if (interactions.length === 0) {
     return (
       <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <CheckCircle className="h-6 w-6 text-green-500" />
-            No Interactions Found
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-gray-600">
-            Great news! No significant interactions were found between your medications and supplements.
-          </p>
+        <CardContent className="pt-6">
+          <div className="flex items-center gap-2 text-green-600">
+            <CheckCircle className="h-5 w-5" />
+            <p className="text-gray-600">
+              Great news! No significant interactions were found between your medications and supplements.
+            </p>
+          </div>
         </CardContent>
       </Card>
     )
