@@ -1,9 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import { Drug } from '@/types'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Pill, AlertCircle, Info } from 'lucide-react'
+import { Pill, AlertCircle, Info, ChevronDown, ChevronUp } from 'lucide-react'
 
 interface MedicationInfoProps {
   drug: Drug
@@ -87,19 +88,37 @@ const getMedicationInfo = (drug: Drug) => {
 
 export function MedicationInfo({ drug }: MedicationInfoProps) {
   const info = getMedicationInfo(drug)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   return (
     <Card className="w-full">
-      <CardHeader>
-        <CardTitle className="flex items-center space-x-2">
-          <Pill className="h-5 w-5 text-blue-600" />
-          <span>{drug.name} Information</span>
-          <Badge variant="secondary" className="ml-auto">
-            {info.category}
-          </Badge>
+      <CardHeader 
+        className="cursor-pointer hover:bg-gray-50 transition-colors"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        <CardTitle className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <Pill className="h-5 w-5 text-blue-600" />
+            <span>{drug.name} Information</span>
+            <Badge variant="secondary">
+              {info.category}
+            </Badge>
+          </div>
+          {isExpanded ? (
+            <ChevronUp className="h-5 w-5 text-gray-500" />
+          ) : (
+            <ChevronDown className="h-5 w-5 text-gray-500" />
+          )}
         </CardTitle>
+        {!isExpanded && (
+          <p className="text-sm text-gray-600 mt-2">
+            Click to view detailed medication information
+          </p>
+        )}
       </CardHeader>
-      <CardContent className="space-y-6">
+      
+      {isExpanded && (
+        <CardContent className="space-y-6">
         {/* Description */}
         <div>
           <h4 className="font-medium text-gray-900 mb-2">What is {drug.name}?</h4>
@@ -153,7 +172,8 @@ export function MedicationInfo({ drug }: MedicationInfoProps) {
             </div>
           </div>
         </div>
-      </CardContent>
+        </CardContent>
+      )}
     </Card>
   )
 }
