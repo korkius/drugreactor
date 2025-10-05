@@ -95,7 +95,18 @@ export function SupplementRecommendations({ recommendations }: SupplementRecomme
 
   return (
     <div className="space-y-4">
-          {recommendations.map((supplement) => {
+      {/* Header */}
+      <div className="text-center py-4">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center justify-center gap-2">
+          <Heart className="h-5 w-5 text-green-600" />
+          Recommended Supplements
+        </h3>
+        <p className="text-sm text-gray-600 max-w-2xl mx-auto">
+          These supplements may help support your health while taking this medication. Always consult your healthcare provider before starting any new supplements.
+        </p>
+      </div>
+      
+      {recommendations.map((supplement) => {
             const isExpanded = expandedSupplement === supplement.id
             const details = getSupplementDetails(supplement)
             
