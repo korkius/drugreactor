@@ -1,6 +1,5 @@
 'use client'
 
-import { Card, CardContent } from '@/components/ui/card'
 import { RiskBadge } from '@/components/RiskBadge'
 import { EvidenceBadge } from '@/components/EvidenceBadge'
 import { DrugInteraction } from '@/types'
@@ -41,23 +40,17 @@ interface InteractionsTableProps {
 export function InteractionsTable({ interactions }: InteractionsTableProps) {
   if (interactions.length === 0) {
     return (
-      <Card>
-        <CardContent className="pt-6">
-          <div className="flex items-center gap-2 text-green-600">
-            <CheckCircle className="h-5 w-5" />
-            <p className="text-gray-600">
-              Great news! No significant interactions were found between your medications and supplements.
-            </p>
-          </div>
-        </CardContent>
-      </Card>
+      <div className="flex items-center gap-2 text-green-600 py-4">
+        <CheckCircle className="h-5 w-5" />
+        <p className="text-gray-600">
+          Great news! No significant interactions were found between your medications and supplements.
+        </p>
+      </div>
     )
   }
 
   return (
-    <Card>
-      <CardContent className="pt-6">
-        <div className="space-y-6">
+    <div className="space-y-6">
           {interactions.map((interaction) => (
             <div
               key={interaction.id}
@@ -123,7 +116,5 @@ export function InteractionsTable({ interactions }: InteractionsTableProps) {
             </div>
           ))}
         </div>
-      </CardContent>
-    </Card>
   )
 }
