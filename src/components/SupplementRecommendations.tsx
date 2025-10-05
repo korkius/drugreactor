@@ -96,12 +96,12 @@ export function SupplementRecommendations({ recommendations }: SupplementRecomme
   return (
     <div className="space-y-4">
       {/* Header */}
-      <div className="py-4">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2">
-          <Heart className="h-5 w-5 text-green-600" />
+      <div className="py-4 border-l-4 border-green-500 bg-green-50 pl-4 rounded-r-lg">
+        <h3 className="text-xl font-bold text-green-800 mb-2 flex items-center gap-2">
+          <Heart className="h-6 w-6 text-green-600" />
           Recommended Supplements
         </h3>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-green-700 font-medium">
           These supplements may help support your health while taking this medication. Always consult your healthcare provider before starting any new supplements.
         </p>
       </div>
