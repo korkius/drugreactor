@@ -404,9 +404,6 @@ export function DrugSearch({ drugs, onDrugsChange, onSearch, onNewSearch, isLoad
             <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent group-hover:from-blue-700 group-hover:to-blue-900 transition-all duration-300">
               DrugReactor
             </h1>
-            <p className="text-sm text-gray-500 font-medium -mt-1">
-              Safe • Smart • Reliable
-            </p>
           </div>
         </div>
 
