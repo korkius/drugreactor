@@ -119,8 +119,33 @@ export default function Home() {
       setDrugs(restoredDrugs)
       
       // Manually trigger analysis for URL-loaded drugs
-      setTimeout(() => {
-        handleSearch(restoredDrugs)
+      setTimeout(async () => {
+        setIsLoading(true)
+        setError(null)
+        setResults(null)
+
+        try {
+          const response = await fetch('/api/interactions', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ drugs: restoredDrugs }),
+          })
+
+          const data = await response.json()
+
+          if (data.success) {
+            setResults(data.data)
+          } else {
+            setError(data.error || 'Failed to analyze medications')
+          }
+        } catch (err) {
+          setError('Network error. Please try again.')
+          console.error('Error:', err)
+        } finally {
+          setIsLoading(false)
+        }
       }, 100)
     } else {
       // Push initial home state to history
