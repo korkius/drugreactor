@@ -194,5 +194,6 @@ export function SupplementRecommendations({ recommendations }: SupplementRecomme
             </div>
           </div>
         </div>
+    </div>
   )
 }
