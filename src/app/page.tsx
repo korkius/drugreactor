@@ -116,7 +116,7 @@ export default function Home() {
       console.log('Restored drug names:', drugNames)
       
       const restoredDrugs = drugNames.map(name => ({
-        id: generateId(),
+        id: generateId(name),
         name: name,
         type: 'prescription' as const,
         category: 'Unknown'
