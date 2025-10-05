@@ -12,6 +12,7 @@ interface DrugSearchProps {
   drugs: Drug[]
   onDrugsChange: (drugs: Drug[]) => void
   onSearch: () => void
+  onNewSearch?: () => void
   isLoading?: boolean
 }
 
@@ -226,7 +227,7 @@ const DRUG_DATABASE: Drug[] = [
   { id: 'multivitamin', name: 'Multivitamin', type: 'supplement', category: 'Vitamin' },
 ]
 
-export function DrugSearch({ drugs, onDrugsChange, onSearch, isLoading = false }: DrugSearchProps) {
+export function DrugSearch({ drugs, onDrugsChange, onSearch, onNewSearch, isLoading = false }: DrugSearchProps) {
   const [inputValue, setInputValue] = useState('')
   const [suggestions, setSuggestions] = useState<SearchSuggestion[]>([])
   const [showSuggestions, setShowSuggestions] = useState(false)
@@ -381,7 +382,11 @@ export function DrugSearch({ drugs, onDrugsChange, onSearch, isLoading = false }
     <div className="w-full max-w-4xl mx-auto space-y-6">
       {/* Header */}
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold text-gray-900">
+        <h1 
+          className="text-4xl font-bold text-gray-900 cursor-pointer hover:text-blue-600 transition-colors duration-200"
+          onClick={() => onNewSearch?.()}
+          title="Click to start a new search"
+        >
           DrugReactor
         </h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">

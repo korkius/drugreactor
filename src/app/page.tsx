@@ -100,6 +100,7 @@ export default function Home() {
             drugs={drugs}
             onDrugsChange={handleDrugsChange}
             onSearch={handleSearch}
+            onNewSearch={handleNewSearch}
             isLoading={isLoading}
           />
 

@@ -1,5 +1,4 @@
 {
-  "name": "medication-interaction-checker",
   "framework": "nextjs",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
