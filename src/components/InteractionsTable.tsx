@@ -1,10 +1,10 @@
 'use client'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { RiskBadge } from '@/components/RiskBadge'
 import { EvidenceBadge } from '@/components/EvidenceBadge'
 import { DrugInteraction } from '@/types'
-import { AlertTriangle, CheckCircle, ExternalLink } from 'lucide-react'
+import { CheckCircle, ExternalLink } from 'lucide-react'
 
 // Function to get proper URLs for sources
 const getSourceUrl = (source: string): string => {
@@ -59,13 +59,7 @@ export function InteractionsTable({ interactions }: InteractionsTableProps) {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <AlertTriangle className="h-6 w-6 text-orange-500" />
-          Drug Interactions
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
+      <CardContent className="pt-6">
         <div className="space-y-6">
           {interactions.map((interaction) => (
             <div
