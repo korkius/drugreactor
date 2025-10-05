@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect, KeyboardEvent } from 'react'
-import { Search, X, Pill, AlertCircle, Shield, Heart, Activity } from 'lucide-react'
+import { Search, X, Pill, AlertCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
@@ -417,16 +417,16 @@ export function DrugSearch({ drugs, onDrugsChange, onSearch, onNewSearch, isLoad
         {/* Trust Indicators */}
         <div className="flex items-center justify-center space-x-6 text-sm text-gray-500">
           <div className="flex items-center space-x-1">
-            <Heart className="w-4 h-4 text-red-500" />
-            <span>Medical Grade</span>
+            <span className="text-lg">💊</span>
+            <span>Type</span>
           </div>
           <div className="flex items-center space-x-1">
-            <Shield className="w-4 h-4 text-green-500" />
-            <span>Privacy First</span>
+            <span className="text-lg">⚙️</span>
+            <span>Check</span>
           </div>
           <div className="flex items-center space-x-1">
-            <Activity className="w-4 h-4 text-blue-500" />
-            <span>Instant Results</span>
+            <span className="text-lg">✅</span>
+            <span>Understand</span>
           </div>
         </div>
       </div>
