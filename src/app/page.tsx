@@ -110,7 +110,6 @@ export default function Home() {
     if (drugsParam) {
       // Restore drugs from URL
       const drugNames = drugsParam.split(',').map(name => name.trim())
-      // This will trigger the auto-analysis via handleDrugsChange
       const restoredDrugs = drugNames.map(name => ({
         id: generateId(),
         name: name,
@@ -118,6 +117,11 @@ export default function Home() {
         category: 'Unknown'
       }))
       setDrugs(restoredDrugs)
+      
+      // Manually trigger analysis for URL-loaded drugs
+      setTimeout(() => {
+        handleSearch(restoredDrugs)
+      }, 100)
     } else {
       // Push initial home state to history
       window.history.pushState({ page: 'home' }, '', '/')
@@ -130,7 +134,7 @@ export default function Home() {
     return () => {
       window.removeEventListener('popstate', handlePopState)
     }
-  }, [])
+  }, []) // Empty dependency array is correct here
 
   // Update browser history when results change
   useEffect(() => {
