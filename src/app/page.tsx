@@ -107,19 +107,27 @@ export default function Home() {
     const urlParams = new URLSearchParams(window.location.search)
     const drugsParam = urlParams.get('drugs')
     
+    console.log('URL params:', window.location.search)
+    console.log('Drugs param:', drugsParam)
+    
     if (drugsParam) {
       // Restore drugs from URL
       const drugNames = drugsParam.split(',').map(name => name.trim())
+      console.log('Restored drug names:', drugNames)
+      
       const restoredDrugs = drugNames.map(name => ({
         id: generateId(),
         name: name,
         type: 'prescription' as const,
         category: 'Unknown'
       }))
+      
+      console.log('Restored drugs:', restoredDrugs)
       setDrugs(restoredDrugs)
       
       // Manually trigger analysis for URL-loaded drugs
       setTimeout(async () => {
+        console.log('Starting analysis for URL-loaded drugs')
         setIsLoading(true)
         setError(null)
         setResults(null)
@@ -134,6 +142,7 @@ export default function Home() {
           })
 
           const data = await response.json()
+          console.log('Analysis response:', data)
 
           if (data.success) {
             setResults(data.data)
