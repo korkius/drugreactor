@@ -415,9 +415,6 @@ export function DrugSearch({ drugs, onDrugsChange, onSearch, onNewSearch, isLoad
           <p className="text-xl text-gray-700 max-w-2xl mx-auto font-medium">
             Check drug interactions and get personalized supplement guidance
           </p>
-          <p className="text-gray-500 max-w-xl mx-auto">
-            Enter your medications and supplements to get started
-          </p>
         </div>
 
         {/* Trust Indicators */}
