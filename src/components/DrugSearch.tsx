@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect, KeyboardEvent } from 'react'
-import { Search, Plus, X, Pill, AlertCircle, Shield, Heart, Activity } from 'lucide-react'
+import { Search, X, Pill, AlertCircle, Shield, Heart, Activity } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
@@ -449,28 +449,9 @@ export function DrugSearch({ drugs, onDrugsChange, onSearch, onNewSearch, isLoad
               value={inputValue}
               onChange={(e) => handleInputChange(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="h-14 text-lg pl-12 pr-12"
+              className="h-14 text-lg pl-12 pr-4"
               disabled={isLoading}
             />
-            <Button
-              type="button"
-              size="icon"
-              className="absolute right-2 top-2 h-10 w-10"
-              onClick={() => {
-                if (inputValue.trim()) {
-                  const customDrug: Drug = {
-                    id: generateId(inputValue),
-                    name: normalizeDrugName(inputValue),
-                    type: 'prescription',
-                    category: 'Unknown'
-                  }
-                  addDrug(customDrug)
-                }
-              }}
-              disabled={!inputValue.trim() || isLoading}
-            >
-              <Plus className="h-5 w-5" />
-            </Button>
           </div>
           
           {/* Autocomplete Suggestions */}
