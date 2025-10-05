@@ -95,104 +95,104 @@ export function SupplementRecommendations({ recommendations }: SupplementRecomme
 
   return (
     <div className="space-y-4">
-      {recommendations.map((supplement) => {
-        const isExpanded = expandedSupplement === supplement.id
-        const details = getSupplementDetails(supplement)
-        
-        return (
-          <div key={supplement.id} className="border rounded-lg overflow-hidden">
-            <div 
-              className="p-4 hover:bg-gray-50 transition-colors cursor-pointer"
-              onClick={() => toggleSupplement(supplement.id)}
-            >
-              <div className="flex items-start justify-between mb-2">
-                <div className="flex items-center space-x-2">
-                  <h4 className="font-medium text-gray-900">{supplement.name}</h4>
-                  <Badge 
-                    variant="secondary" 
-                    className={`${categoryColors[supplement.category] || 'bg-gray-100 text-gray-800'} flex items-center space-x-1`}
-                  >
-                    {categoryIcons[supplement.category]}
-                    <span>{supplement.category}</span>
-                  </Badge>
-                </div>
-                {isExpanded ? (
-                  <ChevronUp className="h-5 w-5 text-gray-500" />
-                ) : (
-                  <ChevronDown className="h-5 w-5 text-gray-500" />
-                )}
-              </div>
-              <p className="text-sm text-gray-700 leading-relaxed">
-                {supplement.reason}
-              </p>
-              {!isExpanded && (
-                <p className="text-xs text-gray-500 mt-2">
-                  Click to learn more about {supplement.name}
-                </p>
-              )}
-            </div>
+          {recommendations.map((supplement) => {
+            const isExpanded = expandedSupplement === supplement.id
+            const details = getSupplementDetails(supplement)
             
-            {isExpanded && (
-              <div className="border-t bg-gray-50 p-4 space-y-4">
-                {/* Description */}
-                <div>
-                  <h5 className="font-medium text-gray-900 mb-2">What is {supplement.name}?</h5>
-                  <p className="text-sm text-gray-700 leading-relaxed">{details.description}</p>
+            return (
+              <div key={supplement.id} className="border rounded-lg overflow-hidden">
+                <div 
+                  className="p-4 hover:bg-gray-50 transition-colors cursor-pointer"
+                  onClick={() => toggleSupplement(supplement.id)}
+                >
+                  <div className="flex items-start justify-between mb-2">
+                    <div className="flex items-center space-x-2">
+                      <h4 className="font-medium text-gray-900">{supplement.name}</h4>
+                      <Badge 
+                        variant="secondary" 
+                        className={`${categoryColors[supplement.category] || 'bg-gray-100 text-gray-800'} flex items-center space-x-1`}
+                      >
+                        {categoryIcons[supplement.category]}
+                        <span>{supplement.category}</span>
+                      </Badge>
+                    </div>
+                    {isExpanded ? (
+                      <ChevronUp className="h-5 w-5 text-gray-500" />
+                    ) : (
+                      <ChevronDown className="h-5 w-5 text-gray-500" />
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    {supplement.reason}
+                  </p>
+                  {!isExpanded && (
+                    <p className="text-xs text-gray-500 mt-2">
+                      Click to learn more about {supplement.name}
+                    </p>
+                  )}
                 </div>
                 
-                {/* Benefits */}
-                <div>
-                  <h5 className="font-medium text-gray-900 mb-2">Key Benefits:</h5>
-                  <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
-                    {details.benefits.map((benefit: string, index: number) => (
-                      <li key={index}>{benefit}</li>
-                    ))}
-                  </ul>
-                </div>
-                
-                {/* Dosage */}
-                <div className="bg-blue-50 p-3 rounded-lg">
-                  <h5 className="font-medium text-blue-900 mb-1">Typical Dosage:</h5>
-                  <p className="text-sm text-blue-800">{details.dosage}</p>
-                </div>
-                
-                {/* Sources */}
-                <div>
-                  <h5 className="font-medium text-gray-900 mb-2">Food Sources:</h5>
-                  <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
-                    {details.sources.map((source: string, index: number) => (
-                      <li key={index}>{source}</li>
-                    ))}
-                  </ul>
-                </div>
-                
-                {/* Interactions */}
-                <div className="bg-yellow-50 p-3 rounded-lg">
-                  <div className="flex items-start space-x-2">
-                    <Info className="h-4 w-4 text-yellow-600 mt-0.5 flex-shrink-0" />
+                {isExpanded && (
+                  <div className="border-t bg-gray-50 p-4 space-y-4">
+                    {/* Description */}
                     <div>
-                      <h5 className="font-medium text-yellow-900 mb-1">Important:</h5>
-                      <p className="text-sm text-yellow-800">{details.interactions}</p>
+                      <h5 className="font-medium text-gray-900 mb-2">What is {supplement.name}?</h5>
+                      <p className="text-sm text-gray-700 leading-relaxed">{details.description}</p>
+                    </div>
+                    
+                    {/* Benefits */}
+                    <div>
+                      <h5 className="font-medium text-gray-900 mb-2">Key Benefits:</h5>
+                      <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                        {details.benefits.map((benefit: string, index: number) => (
+                          <li key={index}>{benefit}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    {/* Dosage */}
+                    <div className="bg-blue-50 p-3 rounded-lg">
+                      <h5 className="font-medium text-blue-900 mb-1">Typical Dosage:</h5>
+                      <p className="text-sm text-blue-800">{details.dosage}</p>
+                    </div>
+                    
+                    {/* Sources */}
+                    <div>
+                      <h5 className="font-medium text-gray-900 mb-2">Food Sources:</h5>
+                      <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+                        {details.sources.map((source: string, index: number) => (
+                          <li key={index}>{source}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    {/* Interactions */}
+                    <div className="bg-yellow-50 p-3 rounded-lg">
+                      <div className="flex items-start space-x-2">
+                        <Info className="h-4 w-4 text-yellow-600 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <h5 className="font-medium text-yellow-900 mb-1">Important:</h5>
+                          <p className="text-sm text-yellow-800">{details.interactions}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
-            )}
-          </div>
-        )
-      })}
-    </div>
-    
-    <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-      <div className="flex items-start space-x-2">
-        <Shield className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-        <div>
-          <h4 className="font-medium text-blue-900 mb-1">Important Safety Note</h4>
-          <p className="text-sm text-blue-800">
-            These recommendations are for educational purposes only. Always discuss supplement use with your healthcare provider, especially if you have any medical conditions or are taking other medications. Some supplements may interact with your medication or affect its effectiveness.
-          </p>
+            )
+          })}
         </div>
-      </div>
-    </div>
+        
+        <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+          <div className="flex items-start space-x-2">
+            <Shield className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+            <div>
+              <h4 className="font-medium text-blue-900 mb-1">Important Safety Note</h4>
+              <p className="text-sm text-blue-800">
+                These recommendations are for educational purposes only. Always discuss supplement use with your healthcare provider, especially if you have any medical conditions or are taking other medications. Some supplements may interact with your medication or affect its effectiveness.
+              </p>
+            </div>
+          </div>
+         </div>
   )
 }
