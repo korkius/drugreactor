@@ -193,6 +193,30 @@ export default function Home() {
           )}
         </div>
       </div>
+      
+      {/* Medical Disclaimer */}
+      <div className="bg-yellow-50 border-t border-yellow-200 mt-12">
+        <div className="container mx-auto px-4 py-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-start gap-3">
+              <div className="flex-shrink-0">
+                <svg className="h-6 w-6 text-yellow-600 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-yellow-800 mb-2">Important Medical Disclaimer</h3>
+                <p className="text-yellow-800 mb-2">
+                  <strong>This information is for educational purposes only and should not replace professional medical advice.</strong>
+                </p>
+                <p className="text-yellow-700">
+                  Always consult with your healthcare provider before making any changes to your medications or supplements.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
