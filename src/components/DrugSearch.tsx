@@ -418,15 +418,7 @@ export function DrugSearch({ drugs, onDrugsChange, onSearch, onNewSearch, isLoad
         <div className="flex items-center justify-center space-x-6 text-sm text-gray-500">
           <div className="flex items-center space-x-1">
             <span className="text-lg">💊</span>
-            <span>Type</span>
-          </div>
-          <div className="flex items-center space-x-1">
-            <span className="text-lg">⚙️</span>
-            <span>Check</span>
-          </div>
-          <div className="flex items-center space-x-1">
-            <span className="text-lg">✅</span>
-            <span>Understand</span>
+            <span>Type to enter</span>
           </div>
         </div>
       </div>
