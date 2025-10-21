@@ -410,7 +410,7 @@ export function DrugSearch({ drugs, onDrugsChange, onSearch, onNewSearch, isLoad
         {/* Tagline */}
         <div className="space-y-2">
           <p className="text-xl text-gray-700 max-w-2xl mx-auto font-medium">
-            Check medication interactions and get personalized supplement guidance
+            Check drug interactions and get personalized supplement guidance
           </p>
         </div>
 

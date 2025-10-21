@@ -243,7 +243,7 @@ export default function Home() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-yellow-800 mb-2">Important Medical Disclaimer</h3>
+                <h3 className="text-lg font-semibold text-yellow-800 mb-2">Important Disclaimer</h3>
                 <p className="text-yellow-800 mb-2">
                   <strong>This information is for educational purposes only and should not replace professional medical advice.</strong>
                 </p>
